@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AoC Day 13 - Arcade Game</title>
+        <style>
+            #score {
+                text-align: center;
+                margin: 40px;
+                font-family: sans-serif;
+                font-size: 2em;
+            }
+            #game {
+                margin: auto;
+                display: block;
+            }
+            button {
+                text-align: center;
+                font-family: sans-serif;
+                background-color: lightgrey;
+                padding: 5px;
+                margin: 60px auto 0;
+                display: block;
+                font-size: 1.2em;
+                outline: none;
+                border: 2px solid darkgrey;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: darkgrey;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="score">Score:</div>
+        <canvas id="game" width="450" height="250"></canvas>
+        <button onclick="autoplay = !autoplay">Switch mode</button>
+        <script src="./day13_web.js"></script>
+    </body>
+</html>
