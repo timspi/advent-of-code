@@ -8,6 +8,8 @@ config();
 type TransformFuntion<T> = (data: string) => T;
 type SolveFuntion<T> = (data: T) => string | number;
 
+const isTestMode = process.argv[2] === 'test';
+
 export class Solver<T = string> {
     private data: string;
     private transform?: TransformFuntion<T>;
@@ -21,6 +23,12 @@ export class Solver<T = string> {
     constructor(transform?: TransformFuntion<T>) {
         this.data = '';
         this.transform = transform;
+    }
+
+    static log(...params: any) {
+        if (isTestMode) {
+            console.log(...params);
+        }
     }
 
     test(data: string, result1: string | number, result2?: string | number) {
@@ -43,10 +51,12 @@ export class Solver<T = string> {
             }
             console.log('Test for part2 passed');
         }
-        console.log('');
+        if (!isTestMode) console.log('');
     }
 
     async run() {
+        if (isTestMode) return;
+
         await this.loadData();
 
         let data: T;
