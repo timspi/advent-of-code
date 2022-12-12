@@ -106,8 +106,8 @@ export class Solver<T = string> {
                     }
                 } else {
                     this.data = data;
+                    resolve();
                 }
-                resolve();
             });
         });
     }
