@@ -1,3 +1,4 @@
+import { FieldAnimation, Points } from "./field-animation";
 import { ROWS, Solver } from "./solver";
 
 type Rope = [number, number][];
@@ -28,6 +29,8 @@ solver.part1 = moves => {
     return tailPositions.size;
 };
 
+const animation = new FieldAnimation();
+
 solver.part2 = moves => {
     const rope: Rope = [];
     for (let i = 0; i < 10; i++) {
@@ -52,12 +55,20 @@ solver.part2 = moves => {
             Solver.log(`moved ${dir} | ${rope[0]} | ${rope[9]}`);
 
             tailPositions.add(`${rope[9]}`);
+            if (!solver.isTesting) animation.addFrame(conv(rope))
         }
-        // printTestField(rope);
     }
 
     return tailPositions.size;
 };
+
+function conv(rope: Rope): Points {
+    const points: Points = {};
+    for (let i = 0; i < 10; i++) {
+        points[rope[i].join(',')] = i === 0 ? 'H' : `${i}`;
+    }
+    return points;
+}
 
 enum Direction { X = 0, Y = 1 };
 function calcMove(rope: Rope, i: number) {
@@ -69,36 +80,6 @@ function calcMove(rope: Rope, i: number) {
         rope[i][Direction.Y] += Math.sign(dy);
     }
 }
-
-// function printTestField(rope: Rope) {
-//     const field = `..........................
-// ..........................
-// ..........................
-// ..........................
-// ..........................
-// ..........................
-// ..........................
-// ..........................
-// ..........................
-// ..........................
-// ..........................
-// ..........................
-// ..........................
-// ..........................
-// ..........................
-// ...........s..............
-// ..........................
-// ..........................
-// ..........................
-// ..........................
-// ..........................`.split('\n').map(line => line.split(''));
-//     for (let i = 0; i < 10; i++) {
-//         const [x, y] = rope[i];
-//         field[15 - y][x + 11] = i === 0 ? 'H' : `${i}`;
-//     }
-//     Solver.log(field.map(line => line.join('')).join('\n'));
-//     Solver.log();
-// }
 
 solver.test(`R 4
 U 4
@@ -118,4 +99,4 @@ D 10
 L 25
 U 20`, 88, 36);
 
-solver.run();
+solver.run().then(() => animation.play(60));

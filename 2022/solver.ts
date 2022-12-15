@@ -20,6 +20,8 @@ export class Solver<T = string> {
     part1?: SolveFuntion<T>;
     part2?: SolveFuntion<T>;
 
+    isTesting = false;
+
     constructor(transform?: TransformFuntion<T>) {
         this.data = '';
         this.transform = transform;
@@ -32,6 +34,7 @@ export class Solver<T = string> {
     }
 
     test(data: string, result1: string | number, result2?: string | number) {
+        this.isTesting = true;
         const transformedData = this.transform ? this.transform(data) : data as T;
         if (this.part1) {
             const evaluated1 = this.part1(transformedData);
@@ -52,6 +55,7 @@ export class Solver<T = string> {
             console.log('Test for part2 passed');
         }
         if (!isTestMode) console.log('');
+        this.isTesting = false;
     }
 
     async run() {
