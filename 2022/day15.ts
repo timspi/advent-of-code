@@ -1,4 +1,5 @@
 import { Solver } from "./solver";
+import { drawMap, Map } from "./util/map";
 
 const solver = new Solver(data => {
     let minX = Infinity, maxX = -Infinity;
@@ -12,12 +13,27 @@ const solver = new Solver(data => {
 
         return { sensorX, sensorY, distance, beaconX, beaconY };
     });
+    if (solver.isTesting) visualize(sensors);
 
     return { sensors, minX, maxX };
 });
 
 function getDistance(x1: number, y1: number, x2: number, y2: number) {
     return Math.abs(x1 - x2) + Math.abs(y1 - y2);
+}
+
+const visualize = (data: { sensorX: number, sensorY: number, distance: number, beaconY: number, beaconX: number }[]) => {
+    const map: Map = {};
+    for (const s of data) {
+        map[`${s.sensorX},${s.sensorY}`] = 'S';
+        map[`${s.beaconX},${s.beaconY}`] = 'B';
+        for (let dx = -s.distance; dx <= s.distance; dx++) {
+            for (let dy = -s.distance; dy <= s.distance; dy++) {
+                if (Math.abs(dx) + Math.abs(dy) <= s.distance && !map[`${s.sensorX + dx},${s.sensorY + dy}`]) map[`${s.sensorX + dx},${s.sensorY + dy}`] = '#';
+            }
+        }
+    }
+    Solver.log(drawMap(map, 5, 1));
 }
 
 solver.part1 = ({ sensors, maxX, minX }) => {
