@@ -1,5 +1,7 @@
-import { FieldAnimation, Points } from "./field-animation";
+import { FieldAnimation, Points } from "./util/field-animation";
 import { ROWS, Solver } from "./solver";
+
+const playAnimation = process.argv[2] === 'animate';
 
 type Rope = [number, number][];
 
@@ -55,7 +57,7 @@ solver.part2 = moves => {
             Solver.log(`moved ${dir} | ${rope[0]} | ${rope[9]}`);
 
             tailPositions.add(`${rope[9]}`);
-            if (!solver.isTesting) animation.addFrame(conv(rope))
+            if (playAnimation) animation.addFrame(conv(rope))
         }
     }
 
@@ -99,4 +101,6 @@ D 10
 L 25
 U 20`, 88, 36);
 
-solver.run().then(() => animation.play(60));
+solver.run().then(() => {
+    if (playAnimation) animation.play(60)
+});
