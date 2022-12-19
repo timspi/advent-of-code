@@ -1,15 +1,13 @@
 export type Map = { [coord: string]: string };
 
-export function drawMap(map: Map, xCoord: false | number = false, yCoord: false | number = false) {
+export function drawMap(map: Map, xCoord: false | number = false, yCoord: false | number = false, mathematicalYDirection = false) {
     const bounds = getMapBounds(map);
 
-    const width = bounds.maxX - bounds.minX + 1;
-    const height = bounds.maxY - bounds.minY + 1;
-
-    const screen: string[][] = new Array(height).fill(0).map(() => new Array(width).fill(' '));
+    const screen: string[][] = new Array(bounds.height).fill(0).map(() => new Array(bounds.width).fill(' '));
     for (let coords in map) {
         const [x, y] = coords.split(',').map(val => Number(val));
-        screen[y - bounds.minY][x - bounds.minX] = map[coords];
+        const screenY = mathematicalYDirection ? bounds.maxY - y : y - bounds.minY;
+        screen[screenY][x - bounds.minX] = map[coords];
     }
 
     let prefixLen = 0;
@@ -36,7 +34,7 @@ export function drawMap(map: Map, xCoord: false | number = false, yCoord: false 
 
     return headerStr + screen.map((line, i) => {
         if (yCoord !== false) {
-            const label = bounds.minY + i;
+            const label = mathematicalYDirection ? bounds.maxY - i : bounds.minY + i;
             const prefix = (label % yCoord === 0 ? `${label}` : '').padStart(prefixLen, ' ');
             return `${prefix} ${line.join('')}`;
         }
@@ -50,7 +48,10 @@ export function getMapBounds(map: Map) {
         maxX: -Infinity,
         minY: Infinity,
         maxY: -Infinity,
+        width: 0,
+        height: 0
     };
+
     for (let coordStr of Object.keys(map)) {
         const [x, y] = coordStr.split(',').map(val => Number(val));
         if (x < bounds.minX) bounds.minX = x;
@@ -58,5 +59,8 @@ export function getMapBounds(map: Map) {
         if (y < bounds.minY) bounds.minY = y;
         if (y > bounds.maxY) bounds.maxY = y;
     }
+    bounds.width = bounds.maxX - bounds.minX + 1;
+    bounds.height = bounds.maxY - bounds.minY + 1;
+
     return bounds;
 }
