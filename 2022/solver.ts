@@ -103,7 +103,7 @@ export class Solver<T = string> {
                                 cookie: `session=${process.env.SESSION_TOKEN}`
                             }
                         });
-                        this.data = resp.data.trim();
+                        this.data = resp.data.trimEnd();
                         writeFile(`data/${day}`, this.data, 'utf-8', (err) => err ? reject(err) : resolve());
                     } else {
                         reject(err);

@@ -1,0 +1,218 @@
+        ooo#
+        .#o.
+        #.o.
+        ..o.
+...#...o..o#
+oooo...o#.oo
+..#o...#....
+...ooooo..#.
+        ...#
+        ....
+        .#..
+        ....
+Test for part1 passed
+
+Transformed input in 42µs
+
+ooo###..#...##................#......#....#........#.o...#.o#......o#.o.#....o..#ooooooo#..#...ooooo
+                                                  oooooooooo##.....o..o#.#...o.....#.o.#oooo#..o.#oo
+                                                  ...o...o...ooooooooooooooo#o#ooooo.o..o..o.##o..oo
+                                                  ...o...o...o.....o.#ooooooooooo#.o.o..o.#o#.ooo#oo
+                                                  oooo#..o...o.....o..o#...o.oooo..o.o..o.#o..oo#.oo
+                                                  ...o...o...o.....o..o.##.o#oooo..o.o..o.oooooooo#o
+                                                  oooooooo#..o..#ooooooooo.o..o#o..o.o..o.oo..oo.ooo
+                                                  #..o...o...o.#oo#o..o..o.oooo#o..o#o..o#oo.#oo.#oo
+                                                  ooooooooooooo#o##o..o#.o.#..#.o#oooo..o.oo.#oo..o#
+                                                  oooo...o..#oooooooooooooooooooooooo#oooooooooooooo
+                                                  o#.##..o.#.o#oooooooooooo##oooooooooo.o.oo..oo..o.
+                                                  o..###.o..#o.o#..o.#o..oo..o.#o#oo.oo#o.oo..oo.#o.
+                                                  o##ooooooooo.o...o..o.#oooooooooooooooo.oo.#oooooo
+                                                  o...o..o...o.o.#.o..o..oo..o..o.oo.oooo#oo..oo..#.
+                                                  ooooo#.o...o.o...o..o..oo..o..o.oo.o#ooooooooooooo
+                                                  o...#oooooooooooooooooooooooooooooooooooo#.ooo....
+                                                  o....o.o...o.o#..o..o..ooooooooooo.o..#oo..ooo....
+                                                  o....o#o...o.o...o..o..o##....oooo.o.#ooooooooooo#
+                                                  oooooooooooo.o#..o#.o..o.ooooooooo#ooo.oo#..oo..o#
+                                                  oooooooooo##ooooooo.o..o.o..#.oo#oo#.o.oo..#oooooo
+                                                  o....o.o.o..oo...oo.o..o.o..#.oooooooo#ooooo#o..o#
+                                                  o..##ooooooooo...oo.o.#o.o#...o#.#o..o..o#.o.o..o.
+                                                  o#oo...o#o..#ooooooooooooooooooooooooooooooooooooo
+                                                  ooooooooooooooooooooooooooo#.#o#.oo..o..o..o.oo.o#
+                                                  ooo....ooo.oo#...oo.o#oo..o...o..oo#.o..o.#ooooooo
+                                                  ooooooooooooooooooo#o.o#..o#..o.#ooooo#ooooooooooo
+                                                  ooo...#oooo#o...#ooooooo.#ooooooooooo#.oo.oo.oo.o.
+                                                  ooooooooo##oo##.#.#oo.oo.#o#..o.o#oooooooooooooooo
+                                                  ooo#...#oo.o.....#oooooooooo##o#oooooo.oo.oo.##.#.
+                                                  ooooooooooooooooooooooooooooooooo#oo#ooooooooooooo
+                                                  oo#.....oo#o..#.o.ooo.#o.oo.#ooooooooooooooooooooo
+                                                  ooo#...#ooooooooo.ooo.#ooooooo#.o.#ooooooooooooooo
+                                                  ooo.#..#oo.o##..#.ooo#oo.o#.oo..o..ooo.oo..o...oo.
+                                                  ooo#...#oooooooooooooooo.o..oo.#o.#ooo#oo#.o#..oo.
+                                                  oooooooooo#o....o.oo..oooooooooooo##oooooooooooooo
+                                                  ooo.#.#ooo.o...#o.oo#.o#.o..#o..oo..o#.oo..o#..oo.
+                                                  ooooooooooooooooo.o#..o..o..oooooooooooooooooooooo
+                                                  ooo.o.oooo#o#...#.o...o..o..oo##oooooooooooooooooo
+                                                  ooooooooooooooooo#oooooooooooooooooooooooooooooooo
+                                                  ooo#o.#ooo#o..o#o.o...o..o..ooo.oo#oo..oo..oo..oo.
+                                                  oo#oo#.oooooooooooooooooooooooooooooo..ooooooooooo
+                                                  ooooo##oooooooooooo...o..o..ooo.oo.o#..o.#.oo..#oo
+                                                  o#oooooooooo#.oooo#...o..o#.ooo.oo.#...o#..oo...o.
+                                                  oooooooooo#...##ooo...o..o.#oooooooooooooooooooooo
+                                                  oooooooo##o#.....oo...o..o..o#o.#o.....o...ooooooo
+                                                  oo#oooooo.o.....#oo.#.o.#o..o.o..o..#..o..#ooooooo
+                                                  oo#oooo.o.o.....ooo###oooooooooooo.....o#..ooo..o.
+                                                  ooooooooooo#....oo...#o..o.#o#o#.#.....ooooooooooo
+                                                  ooooooo#oooooooooooo#.o..o..#.o....##..oo.#ooooooo
+                                                  oo.ooo.oo#oo...#ooooooo#.o..#.o......#.oo..oo##.o.
+                                                  oooooooooooo..##oo#o..#.#oooo.o........oo..oo.#ooo
+                                                  oo.ooo.ooooo##..oo.oooo#.o..o.o........oo..oo..oo.
+                                                  oo#ooooooooo#...oo.###o.#o..o.o..#...#.oo..oo..oo.
+                                                  ooo##o#ooooo.#oooooooooooooooooooooooooooooooooooo
+                                                  ooooooooooooooooo#..o.#.#...o#ooooooooooo.#o#..oo#
+                                                  o##.oo.oooo#..o#....o...#...o.o....#...oo..o...oo#
+                                                  oooooo.ooooooooo#..#ooooo..#o.o....#...oo#oooooooo
+                                                  o..##o.ooooo.#oo.#.#o..oo...o.o.#....#ooooooooooo#
+                                                  oooooooooooo#ooo#...o..oo...o.o.#.#...ooo.#ooooooo
+                                                  o##ooooooooooooo....o..oo...o.o.......oooooooooooo
+                                                  oooooo.ooo###oooooooooooo...o.o#..#.#.ooo#...#.o.o
+                                                  o..ooo#ooooooooo..#.o..#o.#.o#o.......#ooo.....o.o
+                                                  oooo#ooooo#..o#o.#o#o.#oooooooooooooooo#oooooooooo
+                                                  o..ooooo#ooo#o.o..o#o..oo...o.o.......o#o#.....o#o
+                                                  o#.ooo#..ooo.o.o..o.o..oo...o#o.#...#.o.o.....#ooo
+                                                  ooooooo..ooo.o#o..o.o..oo..#o.o.ooooooooo.#....#oo
+                                                  o..oooo..ooo.oooooo#ooooooooooo#o#....o.o.#.#.#.oo
+                                                  ooooooo..ooo#ooo..o.o..oo..oo.##oooooooooooooooooo
+                                                  o.#oooooooooooooooooooooooooo#.#o..#..o.o..#o.#.oo
+                                                  oo#oooo.#ooo.ooo..#.oooooooo#..#o..#..o.o.#.o.oooo
+                                                  ooooooooo#ooooooooo.#.#oo..o#...o..#..o.o...o.o#oo
+                                                  ooooo#ooooooooooo#o#oooooooo#...o..#..o.o..#oooo#o
+                                                  o#.oo.o.o..##ooo#.o.#.ooo..#ooooo..#..o.o...o.oo.#
+                                                  ooooooooooooooooooooooooo##.o...o#....o#o...oooo#o
+                                                  ooo#..o.o.#.#o.oo.o#o.oo....o...o.....oooooooooooo
+                                                  ooooooooo#ooooooooooo#ooooooooooo#...#oooooooooooo
+                                                  ##....o.o.o.oo.#oooooooooooooooooo#.#..oo...o.o...
+                                                  #ooooooooooooooooooooooo#.#.o..o#oooooooo#..o.o...
+                                                  .o...#ooooooooooo#oooooooooooooooooooo#oo...o.o..#
+                                                  oooooooo#.#.o..oo.ooo#ooooooooooooo.oo.oo#oooooooo
+                                                  .o....#o....o.#oooooooooo#ooooooooooooooooooo#o.#o
+                                                  #o...#oooooooooooooooo#oo.ooooooooo#ooooooooooo#oo
+                                                  oo#...##.#..o.o.o.oooo.oo.o....o..o.o..o#ooooooooo
+                                                  .o....##ooooo#oooooooo.oooo#...o..o.o..o.ooo#o.oo.
+                                                  .o..#.oooo#oooooooooooooo#o....o#.o#o.#o#ooo.o.oo#
+                                                  #ooooooooo#ooooooooooooooo##...o#.#.o..o.oo#.o.oo.
+                                                  oooooooooooooooooooo#oooooooooooooooo..o.oo.#ooooo
+                                                  ooooooooooooooooooooooooooooooooooooo##ooooooo.ooo
+                                                  oooooooooooooooooooooooo#ooooooooooooooooooooooooo
+                                                  oo##..o.#.oo.oo.#.ooooooooooooooo#.#oo.o.oo...#ooo
+                                                  ooooooo#ooooooooo.ooo#.o.o.....oo..#oo.o#oo.#.#ooo
+                                                  oooo#o#oooooo#ooo.ooo##o#o...#oooooooo#ooooooooooo
+                                                  .o#ooooo#.o#o#ooooooooooooooooooooooooooooooooooo.
+                                                  ooooooooooooooooooooo..o.o.#.oooo#oooo.o#oo.o..#oo
+                                                  .o.o.oooo#ooo.o#o.oo...o#oooooooooooooooooooooooo#
+                                                  .o.oooo#o.o.#.o.o.oo.#.oo#...oooo.oooo#o#oo.o..oo.
+                                                  .o.#.oo#oooooooooooooo#ooo#..oooo.oooo.o.o##o..oo.
+                                                  oo#ooooooooooooooooooooooooooooooooooooooo#ooooooo
+                                                  oooooooooooooooooooooooooooooooooooooooooooooooooo
+                                                  ooooooooooooooooooooooooo#o.#oooo.oooo.o.o#ooooooo
+o.o.#ooooo#o.o.#oooooo##..o.o...#o.o.o.#.....o...o.o.o#oo.o.o.o.#.o.o..o.#ooo.oooooooooo#o.o.#ooooo.
+o.o..o.o.o.o.o.##.oo##oooooooooooooo#oooooooooooooooooooooo#ooooooooooooooooooooooo.oooooooo#.o...o.
+ooooooooooooooooooooooooooo.o....o...o#......o...#.o#o#oo.#oooo..#ooooooooooooooooo.#ooooooooooooooo
+o.o.#o...o.o.o.o..oo..o...o#o....ooooooooooooooooooo#ooooooooooooo#....o..#ooooooooooooooo#oo#oo..o.
+ooooooooooooooooooooooooooo.o.#....###o............#oooooooooooooooooooooooooooo##o..oo.oo.oo.oo.#oo
+ooooooooooooooooooooooooooo#o..#......o............#.o.oo.#oo.o..#ooooooooooo#ooooooooooooooo#oo..#o
+oooooooooo##.o.o...o..o.#.o.o.........o..#....#......o.oo..oo.o#oo.....#..o...oooo#o.oo#oooooooooooo
+#.o.ooo...#..o.o..#oooooo.o.o....#....o........#....#o#oo.#oooooooooooooooo#.#oooooooooooooo..oo...#
+ooo#ooo......o.o...#..o.o.o.o......#..o.............ooooooooooooo#.....o#.o.#ooooo.o#oo..o.##.oo..#o
+....ooo......o#o......o.o.o.o.#...#...ooooooooooooooooooooooo#oooooooooo#.o..oo#oo.o.#o..o....oo...o
+ooooooo......o.o#.....o.ooooo.........o..#.......o.#ooooooooo.#oooooooooo#o..oo.oo.o..o#.o..#ooooooo
+o...oo#......o.o......o#ooo.#.........o..........o#.o#ooooooo...oo#.o.#oo#ooooooooooooooooooooo##.#o
+oooooo.....#.o.o#.....#.ooo.#..#......o.......#..o..o.oo#.oo#...#oooooo#ooooooooooooooooooooo#oooooo
+ooooo#.......o.o.#ooooooooooo#...#....o#.##....#.o#.o.oo..#o.....o.###o#ooo#.o#.oo.o..o..#.##.o....o
+##..o...#....o.o..o.....oo#.#....oooo#oooooooooo.o.#o.oo...o.#oooooooooooooooooooo.o..o.......o....o
+....o........o.o#.o..#.#ooo......o..ooooooooooooooo#o.oo...o.oooooooooo#o#o..o..oo.o..o#......o..#.o
+#...o..#.....o#ooooooooooooooooooo#.#.#.#.o....o.oo.o#oo...o#ooooooooooooooooo#.oo.o#ooooooooooooooo
+##..o....#...o.o..o..o.o#oo......o........o....o.oo.o.oo...o.#o..o.#o.o.ooooo#oooooooo#.......o.....
+.#..o..#.....o.o..o#.o#o.oo......o.....#..o..#.o#oooooooo#oo.ooooo#.o.o.o.o.ooo#oo.o.##..#....o.....
+.##.o......#oooooooooo.o.oo......o#......#ooooooooooo##oooooooooooo#ooooooooooooooooooooooooooo#....
+...#o.......oo.o..o..o#oooo....#.o#....##ooooooooo##oooooooo#oo.#oooooo##.o##ooooooo#....o....o#....
+....o.......oo.o..o..o.#.oo......o....#.oooooo#o.#oooooo#o#oooooo#.oo#o...o.oo#.oo.o.....o....o.#...
+.#..o.#ooooooooooooooooooooooo...o#..#..ooo..o.o..o.##.o.o.o#o#.o..oo#o...o.oo..oo.o..#..o....o.....
+oooooooo...#.o.o..o..o.o.oo..o...o...#.#oooooooooooooooo#o.o.o..o..oooooooo#oooooooooooooooooooooooo
+o...o..#.....o.o..o..o#o.oo..oo..o...#.oooo#.o.oooo.o..#.o.o.o##o..oooo.#.oooooooo#o.....ooooo#ooooo
+#..#o.oo.....o.oooooooooooo#..o..o.###.oooo.#o.o##oooooooooooooooooooooooooooooooooo#........#.o....
+...#o.oo.....o.#..oooooooo#o..o..o...#.oooo#ooooooooooooooooooooooooooo#..ooo#o.o..#........#..o..#.
+....o.oooooooooo..#o#oooooooooooooooooooooooo#.o.#o.oo...o.o.#..o#.oooooooooooooooooo#........#o....
+.#..o.o.....#o#ooooo.o.o...o..o..o.#..#ooooooooooooooo#..o.o..#.o.#oooo...#.oo#.o..oo..#.......o..#.
+oo..o.o.....oooooooooooooooo#.o..o......ooo.oo#o#oo#oo...o.o..o#ooooooo.....oo#.oooooooooooooooooooo
+.o..o.o.....o#....oooo#.#.#o..o..o.....#ooo.oo.o.oo.oo.#.oooooooooo#ooo.....oo..o..oo.....#....o....
+#o..o.o....#o.....o#oooooo#o..o..o......ooo#oo.oooo#oo...o.o.#o#..oooo#.....oo..o..oo........#.o....
+.o..o.o#.#..o.....o.oo.#.o.o..o..o......ooo#oo..#ooooooooooooooo##oo....#...oo..o..oo...#......o.##.
+#o..o.o...#.o.....ooooooooooooooooooooooooooooooooo#oo.#.o.o.ooo..oo....#..#oooooooooooooooooooooooo
+.o..o.o.....o#.#..oooo.o#o.o..o..o#....#oooooooooooooooooo#o.ooo..oo#..#....oo..o..oo.#.#.....##.o.o
+.o.#oooooooooo#...oooo.o.o.o#.o.#o...#..ooo#oooooooooooooooooooo#.oo........oo..o..oo#...........o.o
+.o..o.o#....oo....oooo.o#o.o..o..o..#...ooo.oo....#o#o.o.o.o.ooo..oo.....#..oo..o..ooooooooooooooo#o
+oooooooooooooooooooooooooooooooooo#.#...ooo#oo..#..o.o.o.o.o.ooo..oo........oo..o#.ooo#ooooooooooooo
+.o..#oo#...#oo#.#.oooo.o#ooo..o.....#ooooooooooooooooooooooooooooooooooooooooooooo.ooo#o...#.......o
+#ooooo#..#..oo....oooo.o#..#..o..#...o..ooo#oo.#...o.#.o.o#ooooo.#oo........oo..oo.o#oooooooo#.....o
+oooooo.#.#..oo....oooo.o......o......o..ooo.oo.....o.o#o#oooooo#.#oo........oo..oo.o##.o.#..#.....#o
+.o..o.......oo....oooo.o#.....o......o..ooo.oo....#ooooooooooooooooooooooooooooooo#ooo.o....oooooooo
+oooooooooooooo#..#oooooooooooooooooooooooooooo#.....#ooo#ooooooooooo....#...#o..#o...o.ooooooooooooo
+.o..o#.#....ooooooooooooo.....o......o..#oo##ooooooooooooooo#o.o..#o#.#..#...o...o...o.#.#..o......o
+#ooooooo....oo....oooo..o...#.o..#...o..#oo..o#......o#..#oo#oooooooooo......o.#.o...o......o#....#o
+.o.#o..o....oo....ooooooooooo.o......o...#ooooooooooooooooooooooooooooooooooooooooooooooooooo......o
+.o..o.#oooooooooooo.oo..o...o.o......o...oooooooooooooooooo#...o#..o..o.#..#.o...o...o............#o
+#o..o.oooooooo......oo..o...o#o......o..#ooooooooooooooooooo...o...o..o......o...ooo#o##..........#o
+ooooo#o..#..oo......oo.#o.#.o.oooooooooooooooooooooooooo..#o...o...o..o..#...o##.#.o#o#............o
+oo....o.....oo......oo..o...o.....#..o...oo..o.....#.o.#...o..#ooooooooooooooooooo#o.o.......#...#.o
+oo....o....#ooooooooooooooooooooooo..o#..oo..o#...
+ooooooo#...#oo#.....oo.#oooooooooooooooooooooooooo
+oo......#..##o##..#.oo.ooooooooo##o.#o...oo..oo.#.
+oo#.#.......##oo#..#oo.o....o..o.#o..o...oo..oo#..
+oo....#.....#.oooooooo#o..##o#.o.#o.#o...oo..oo...
+oo..........#.o#...ooo.o....o#.o..o.#o...oo..oo...
+oo............o....ooo.o.##.o..o..o..o..#oo..oo#oo
+o#............o....ooo.o....o..o##oooooooooooooooo
+.#............o....ooo.o.#..o..o.....o...o#..oo.o.
+....#.#.......o...#ooooooooooooooooooo...o...oo.o.
+..............ooooooooooooooo#.o.......#.oooooo.o.
+..............o#..#.#o.o..##ooooooooooooooooooo#o.
+...#..........o......o.o..oooo#....o...o.oo.#oo.o#
+..............o.#....o.o..o.o.#....o...o.oo##oo.o.
+#.......##..#.o#oooooooooooooooooooo#..o.oo..ooooo
+.........#....o.o....o#o.#ooooooooooooooooooooo#oo
+........#.....o.o...#ooo#.o.#......o...o.o#ooooooo
+........#.....o.o#..#ooo#.o#..#...#ooooooooooooooo
+....#....#...#ooooooo#ooooooooooooooooooooooooooo#
+......#........##....#.#.#o.......oo...o.o.o.o.oo.
+............#ooooooooooooooooooooooo...o.o.o.o.oo#
+......##.....o............o#......oo...o#o.o.o#oo.
+.........#..#o#.#.........o#......oo..#ooooo.o.oo#
+#...........#o..#.........o#.##oooooooo..o.#.o.oo.
+.....#..#....o#......#....o#...o..oo..o.#ooo.o.oo.
+oooooooooooooooooooooooooooooooooooooooooo#ooooooo
+....oo.....#.o#...........o#...o..oo..o..o.o.o.o#.
+oooooo#....o#o....#...#.#ooooooooooooooooooooooooo
+....#.....#o.o.#........##o....o..oo.#oooooooooo..
+...........o.o..#.......#.o..#.o..oo.oooooo#.o.#..
+oooooooooooooo#oo#.#.#....o....o..oo.oo.#oo..o...#
+o..........o.#oooooooo#...o....o..oo.oo..ooooo#...
+o.......#..o..o#o.....o#.#o...#o.#ooooooooo..o....
+o.......ooooooooooooooo#..o....ooo#..ooooo#.#o....
+o.....#.o..o..o.o#...###..o....#.o.oooo#.#...o....
+o.......o..o..o#o.#..#oo#.o.#....o.o.oo......o...#
+o.#.....o..o#.o.o....#ooooo#.....o.o#oo......o....
+o..#....ooooooo.o#oooo#o..o......o#o.oo......o....
+o......#...o..#.o.##.o.ooooooooooo.o.ooooooooooo#.
+ooooooooooooooooooo.#o.##.o#..#..#.o.o.......o.o#o
+o.....#ooooooooooooooooooooooooooooooooooooooooo.o
+o.....#oo..o...#o.o..o.#..o......#.o.o#....#...#.o
+o......oo..o..#.o#o#oooooooooooooo.o.o......#..#.o
+o......oo..o....o#oooo....o......o.o.o.....#.#...o
+oooooooooooo#oooooooooooooooo#...o.o.o.......ooooo
+o.#....ooooooooooooooooo#.o.o....o.o.o.......o...o
+o.oooooooooo#o..oo.ooo.o..o#o....o.o.o.......o...o
+o.o....ooooooooooo#ooooooooooooooooooo#...#..o...o
+o.o...#o##.o.o..o#.oo..o..o.o....o.o.o.....#.o...o
+o.o....o.#.o.o..o.#ooooo..o.o....o#o.o..#....o...o
+Result of part1: (calculated in 104s)
+42342
