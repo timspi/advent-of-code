@@ -36,9 +36,9 @@ export class Solver<T = string> {
     test(data: string, result1: string | number | false, result2?: string | number) {
         this.isTesting = true;
         const transformedData = this.transform ? this.transform(data) : data as T;
-        if (this.part1 && result1) {
+        if (this.part1 && result1 !== false) {
             const evaluated1 = this.part1(transformedData);
-            if (evaluated1 != result1 !== false) {
+            if (evaluated1 != result1) {
                 console.log(`Test for part1 failed!`);
                 console.log(`Expected "${result1}", but got "${evaluated1}"`);
                 process.exit(1);
