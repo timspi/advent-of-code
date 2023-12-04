@@ -61,6 +61,11 @@ export class Solver<T = string> {
     async run() {
         if (isTestMode) return;
 
+        let runPartOne = true;
+        let runPartTwo = true;
+        if (process.argv[2] === 'part1') runPartTwo = false;
+        if (process.argv[2] === 'part2') runPartOne = false;
+
         await this.loadData();
 
         let data: T;
@@ -71,7 +76,7 @@ export class Solver<T = string> {
             console.log(`Transformed input in ${transformTime}\n`);
         }
 
-        if (this.part1) {
+        if (this.part1 && runPartOne) {
             const time = this.timeIt(
                 () => this.result1 = this.part1 ? this.part1(data) : undefined
             );
@@ -80,7 +85,7 @@ export class Solver<T = string> {
 
             if (this.part2) console.log('');
         }
-        if (this.part2) {
+        if (this.part2 && runPartTwo) {
             const time = this.timeIt(
                 () => this.result2 = this.part2 ? this.part2(data) : undefined
             );
