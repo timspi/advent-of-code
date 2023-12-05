@@ -1,5 +1,5 @@
 {
-  "name": "aoc",
+  "name": "advent-of-code",
   "version": "1.0.0",
   "description": "My solutions for [Advent of Code](https://adventofcode.com/).",
   "main": "index.js",
