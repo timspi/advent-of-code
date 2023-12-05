@@ -1,7 +1,7 @@
-import { readFile, writeFile } from 'fs';
+import { readFile, writeFile, mkdir } from 'fs';
 import { basename } from 'path';
 import { config } from 'dotenv';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 config();
 
@@ -61,7 +61,13 @@ export class Solver<T = string> {
     async run() {
         if (isTestMode) return;
 
-        await this.loadData();
+        try {
+            await this.loadData();
+        } catch (err) {
+            console.error(err);
+            process.exitCode = 1;
+            return;
+        }
 
         let data: T;
         const transformTime = this.timeIt(
@@ -96,15 +102,36 @@ export class Solver<T = string> {
             readFile(`data/${day}`, 'utf-8', async (err, data) => {
                 if (err) {
                     if (err.code === 'ENOENT') {
-                        // Load file from adeventofcode.com
+                        // Load file from adventofcode.com
                         console.log('Fetching puzzle input\n');
+                        if (!process.env.SESSION_TOKEN) {
+                            return reject('Missing session token! Make sure to create a .env file that sets SESSION_TOKEN as set in the session cookie on https://adventofcode.com.');
+                        }
                         const resp = await axios.get(`https://adventofcode.com/2023/day/${day.slice(3)}/input`, {
                             headers: {
                                 cookie: `session=${process.env.SESSION_TOKEN}`
                             }
+                        }).catch((err: AxiosError) => {
+                            console.log(err);
+                            const msg: string = err.response?.data as any;
+                            if (msg.includes('the link will be enabled on the calendar the instant this puzzle becomes available')) {
+                                reject('Error: This day is not unlocked yet!')
+                            } else if (msg.includes('404')) {
+                                reject(`Error: Invalid day "${day}"! Make sure the filename and location are correct. For example: 2023/day6.ts`);
+                            } else {
+                                reject(`Error: Bad Request! (${msg})`);
+                            }
                         });
+                        if (!resp) return;
                         this.data = resp.data.trim();
-                        writeFile(`data/${day}`, this.data, 'utf-8', (err) => err ? reject(err) : resolve());
+
+                        // Make sure the data directory exists
+                        mkdir('data', (err) => {
+                            if (err && err.code !== 'EEXIST') return reject(err);
+
+                            writeFile(`data/${day}`, this.data, 'utf-8', (err) => err ? reject(err) : resolve());
+                        });
+
                     } else {
                         reject(err);
                     }
