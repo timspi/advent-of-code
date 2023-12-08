@@ -46,3 +46,20 @@ export function match(data: string, regexp: RegExp) {
 export function matchNumbers(data: string) {
     return match(data, /\d+/g).map(el => Number(el));
 }
+
+
+/**
+ * Match the given string with the regex and return all capture groups.
+ * 
+ * @example matchPattern('Foo 2: ABC, 456 => DEF, 123', /Foo (\d+): ([A-Z]+), (\d+) => ([A-Z]+), (\d+)/)
+ * > [ '2', 'ABC', '456', 'DEF', '123' ]
+ * 
+ * @param data
+ * @returns array of capture groups
+ */
+export function matchPattern(data: string, regexp: RegExp) {
+    const match = data.match(regexp);
+    if (!match) throw 'matchPattern(): string did not match pattern';
+    const [_, ...groups] = match;
+    return groups;
+}
