@@ -37,14 +37,14 @@ export function match(data: string, regexp: RegExp) {
 /**
  * Find all integers in the given string and return them in an array.
  * 
- * @example matchNumbers('1sa2ad3  foo 241   bar  4!2')
- * > [ 1, 2, 3, 241, 4, 2 ]
+ * @example matchNumbers('1sa2ad-3  foo 241   bar  4!2')
+ * > [ 1, 2, -3, 241, 4, 2 ]
  * 
  * @param data a string with numbers separated by any charachter
  * @returns array of numbers
  */
 export function matchNumbers(data: string) {
-    return match(data, /\d+/g).map(el => Number(el));
+    return match(data, /-?\d+/g).map(el => Number(el));
 }
 
 
