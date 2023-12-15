@@ -154,6 +154,29 @@ export class Field<T = string> {
         return out;
     }
 
+
+    /**
+     * Returns a string representation of the map as a '|' seperated list of 'x,y:value' entries.
+     * 
+     * @returns string
+     */
+    toString() {
+        let out: string[] = [];
+        for (const [key, val] of this.map.entries()) {
+            out.push(`${key}:${val}`);
+        }
+        return out.join('|');
+    }
+
+    /**
+     * Returns the map as a plain object with coordinates as key in the format 'x,y' and the value as value.
+     * 
+     * @returns object
+     */
+    toJSON() {
+        return Object.fromEntries(this.map.entries());
+    }
+
     /**
      * Returns a string to visualize the map on a screen.
      * 
