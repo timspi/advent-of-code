@@ -1,7 +1,7 @@
-import { arr } from "./array";
-import { forEachPair, forEachPairWithNegatives, forEachPermutation } from "./for-each"
-import { gcd, lcm } from "./math";
-import { match, matchNumbers, matchPattern, split } from "./split";
+import { arr } from "../array";
+import { forEachPair, forEachPairWithNegatives, forEachPermutation } from "../for-each"
+import { gcd, lcm } from "../math";
+import { match, matchNumbers, matchPattern, split } from "../split";
 
 // for-each.ts
 
