@@ -1,5 +1,5 @@
 import { Solver } from "./solver";
-import { Bounds, Field } from "../util/map";
+import { Bounds, Field } from "../util/field";
 import { runCycles } from "../util/cache";
 
 const solver = new Solver();

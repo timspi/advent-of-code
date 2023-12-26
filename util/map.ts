@@ -1,230 +1,127 @@
+class Point {
+    x: number;
+    y: number;
 
-export interface Bounds {
-    maxX: number;
-    maxY: number;
-    minX: number;
-    minY: number;
+    constructor(x: number, y: number) {
+        this.x = x;
+        this.y = y;
+    }
+
+    toString() {
+        return `${this.x},${this.y}`;
+    }
+
+    eq(other: Point) {
+        return this.x === other.x && this.y === other.y;
+    }
 }
 
-export class Field<T = string> {
-    private map: Map<string, T>;
-    private bounds: Bounds;
-    private boundsOutOfSync = false;
+export class Dir extends Point {
 
-    constructor() {
-        this.map = new Map();
-        this.bounds = this.getDefaultBounds();
+    isDiagonal() {
+        return this.x !== 0 && this.y !== 0;
     }
 
-    private getDefaultBounds(): Bounds {
-        return {
-            maxX: -Infinity,
-            maxY: -Infinity,
-            minX: Infinity,
-            minY: Infinity,
-        };
-    }
+    getDirection() {
+        if (this.isDiagonal()) throw new Error('Cannot use getDirection for diagonals!');
 
-    private xy2k(x: number, y: number) {
-        return `${x},${y}`;
-    }
+        if (this.x === 0 && this.y === 0) {
+            return 's';
+        }
 
-    private k2xy(key: string) {
-        return key.split(',').map(el => Number(el)) as [number, number];
-    }
-
-    set(x: number, y: number, value: T) {
-        this.updateBoundsSetValue(x, y);
-        this.map.set(this.xy2k(x, y), value);
-    }
-
-    parseMapString(data: string, ignoreChars = ['.'], transform: (el: string) => T = (el => el as T)) {
-        const arr = data.split('\n');
-        for (let y = 0; y < arr.length; y++) {
-            for (let x = 0; x < arr[y].length; x++) {
-                const char = arr[y][x];
-                if (!ignoreChars.includes(char)) {
-                    this.set(x, y, transform(char));
-                }
-            }
+        if (this.x === 0) {
+            return this.y > 0 ? 'd' : 'u';
+        } else {
+            return this.x > 0 ? 'r' : 'l';
         }
     }
 
-    private updateBoundsSetValue(x: number, y: number) {
-        if (x < this.bounds.minX) this.bounds.minX = x;
-        if (x > this.bounds.maxX) this.bounds.maxX = x;
-        if (y < this.bounds.minY) this.bounds.minY = y;
-        if (y > this.bounds.maxY) this.bounds.maxY = y;
-    }
-
-    has(x: number, y: number) {
-        return this.map.has(this.xy2k(x, y));
-    }
-
-    get(x: number, y: number) {
-        return this.map.get(this.xy2k(x, y));
-    }
-
-    clear() {
-        this.bounds = this.getDefaultBounds();
-        this.map.clear();
-    }
-
-    delete(x: number, y: number) {
-        this.boundsOutOfSync = true;
-        return this.map.delete(this.xy2k(x, y));
-    }
-
-    getBounds() {
-        if (this.boundsOutOfSync) {
-            // Recalculate bounds
-            this.bounds = this.getDefaultBounds();
-            for (const key of this.map.keys()) {
-                const [x, y] = this.k2xy(key);
-                this.updateBoundsSetValue(x, y);
-            }
-            this.boundsOutOfSync = false;
+    turnLeft() {
+        switch (this.getDirection()) {
+            case 'd': return Dir.Right;
+            case 'r': return Dir.Up;
+            case 'u': return Dir.Left;
+            case 'l': return Dir.Down;
+            case 's': return Dir.Stop;
         }
-        return this.bounds;
+    }
+
+    turnRight() {
+        switch (this.getDirection()) {
+            case 'd': return Dir.Left;
+            case 'r': return Dir.Down;
+            case 'u': return Dir.Right;
+            case 'l': return Dir.Up;
+            case 's': return Dir.Stop;
+        }
+    }
+
+    turnAround() {
+        return new Dir(-this.x, -this.y);
+    }
+
+    static Stop = new Dir(0, 0);
+    static Up = new Dir(0, -1);
+    static Down = new Dir(0, 1);
+    static Left = new Dir(-1, 0);
+    static Right = new Dir(1, 0);
+}
+
+export class Pos extends Point {
+    move(dir: Dir, times = 1) {
+        return new Pos(this.x + times * dir.x, this.y + times * dir.y);
+    }
+}
+
+export class Map<T> {
+    map: T[][];
+    width: number;
+    height: number;
+
+    constructor(mapStr: string, transform: (el: string) => T = (el: string) => (el as any)) {
+        this.map = mapStr.split('\n').map(line => line.split('').map(transform));
+        this.width = this.map[0].length;
+        this.height = this.map.length;
+    }
+
+    has(pos: Pos) {
+        return pos.x >= 0 && pos.y >= 0 && pos.x < this.width && pos.y < this.height;
+    }
+
+    startPos() {
+        return new Pos(0, 0);
+    }
+
+    endPos() {
+        return new Pos(this.width - 1, this.height - 1);
     }
 
     /**
-     * Returns the width of the field.
-     * If the field has no entries, returns -Infinity.
-     * 
-     * @returns total width that encompasses all entries
+     * Gets the element at the top left.
      */
-    getWidth() {
-        const bounds = this.getBounds();
-        return bounds.maxX - bounds.minX + 1; // + 1 to include both the max and min value
+    start() {
+        return this.get(this.startPos());
     }
 
     /**
-     * Returns the height of the field.
-     * If the field has no entries, returns -Infinity.
-     * 
-     * @returns total height that encompasses all entries
+     * Gets the element at the bottom right.
      */
-    getHeight() {
-        const bounds = this.getBounds();
-        return bounds.maxY - bounds.minY + 1; // + 1 to include both the max and min value
+    end() {
+        return this.get(this.endPos());
     }
 
     /**
-     * Returns all entries as an array of [x, y, value] elements.
-     * 
-     * @returns Array<[x, y, value]>
+     * Get element at specified pos. Throw an error if out of bounds.
      */
-    getEntries() {
-        const out: [number, number, T][] = [];
-        for (const entry of this.map.entries()) {
-            const [x, y] = this.k2xy(entry[0]);
-            out.push([x, y, entry[1]]);
-        }
-        return out;
+    at(pos: Pos) {
+        if (!this.has(pos)) throw new Error(`Get element at invalid pos: ${pos.x},${pos.y}`);
+        return this.map[pos.y][pos.x];
     }
 
     /**
-     * Returns all entries in the given row as an array of [x, y, value] elements.
-     * 
-     * @param rowY the row index
-     * @returns Array<[x, y, value]>
+     * Get element at specified pos. Return undefined if out of bounds.
      */
-    getRow(rowY: number) {
-        const out: [number, number, T][] = [];
-        for (const entry of this.map.entries()) {
-            const [x, y] = this.k2xy(entry[0]);
-            if (y === rowY) out.push([x, y, entry[1]]);
-        }
-        return out;
-    }
-
-    /**
-     * Returns all entries in the given column as an array of [x, y, value] elements.
-     * 
-     * @param colX the column index
-     * @returns Array<[x, y, value]>
-     */
-    getCol(colX: number) {
-        const out: [number, number, T][] = [];
-        for (const entry of this.map.entries()) {
-            const [x, y] = this.k2xy(entry[0]);
-            if (x === colX) out.push([x, y, entry[1]]);
-        }
-        return out;
-    }
-
-
-    /**
-     * Returns a string representation of the map as a '|' seperated list of 'x,y:value' entries.
-     * 
-     * @returns string
-     */
-    toString() {
-        let out: string[] = [];
-        for (const [key, val] of this.map.entries()) {
-            out.push(`${key}:${val}`);
-        }
-        return out.join('|');
-    }
-
-    /**
-     * Returns the map as a plain object with coordinates as key in the format 'x,y' and the value as value.
-     * 
-     * @returns object
-     */
-    toJSON() {
-        return Object.fromEntries(this.map.entries());
-    }
-
-    /**
-     * Returns a string to visualize the map on a screen.
-     * 
-     * @param xCoord enable x coordinates, the value is the step interval
-     * @param yCoord enable y coordinates, the value is the step interval
-     * @param mathematicalYDirection print so that +y is upward instead of downward 
-     * @param transform transform function to convert the value to a single charachter that is displayed on the map
-     * @returns string representation of the map
-     */
-    toMapString(xCoord: false | number = false, yCoord: false | number = false, mathematicalYDirection = false, transform: (el: T) => string = el => String(el).charAt(0)) {
-        const bounds = this.getBounds();
-
-        const screen: string[][] = new Array(this.getHeight()).fill(0).map(() => new Array(this.getWidth()).fill(' '));
-        for (let entry of this.map.entries()) {
-            const [x, y] = this.k2xy(entry[0]);
-            const screenY = mathematicalYDirection ? bounds.maxY - y : y - bounds.minY;
-            screen[screenY][x - bounds.minX] = transform(entry[1]);
-        }
-
-        let prefixLen = 0;
-        if (yCoord !== false) {
-            prefixLen = Math.max(String(bounds.minY).length, String(bounds.maxY).length);
-        }
-
-        let headerStr: string = '';
-        if (xCoord !== false) {
-            const headerLen = Math.max(String(bounds.minX).length, String(bounds.maxX).length);
-            const header = new Array(headerLen).fill('');
-            for (let x = bounds.minX; x <= bounds.maxX; x++) {
-                const label = String(x).padStart(headerLen, ' ');
-                for (let h = 0; h < headerLen; h++) {
-                    if (x % xCoord === 0) {
-                        header[h] += label[h];
-                    } else {
-                        header[h] += ' ';
-                    }
-                }
-            }
-            headerStr = header.map(line => ''.padStart(prefixLen + 1, ' ') + line).join('\n') + '\n';
-        }
-
-        return headerStr + screen.map((line, i) => {
-            if (yCoord !== false) {
-                const label = mathematicalYDirection ? bounds.maxY - i : bounds.minY + i;
-                const prefix = (label % yCoord === 0 ? `${label}` : '').padStart(prefixLen, ' ');
-                return `${prefix} ${line.join('')}`;
-            }
-            return line.join('');
-        }).join('\n');
+    get(pos: Pos) {
+        return this.map[pos.y]?.[pos.x];
     }
 }
